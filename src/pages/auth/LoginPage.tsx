@@ -1,7 +1,8 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../helpers/hooks";
-import { loginUser, registerUser } from "../../store/actions/users.actions";
+import { loginUser, registerUser} from "../../store/actions/users.actions";
 import { useNavigate } from "react-router-dom";
+import Button from "../../ui/Button";
 import styles from "./regLog.module.css";
 
 const LoginPage = () => {
@@ -26,6 +27,7 @@ const LoginPage = () => {
   }
 
   return (
+
     <div className={styles.container}>
       <form onSubmit={handleSubmit} className={styles.form}>
         <h2>Login form</h2>
@@ -43,6 +45,7 @@ const LoginPage = () => {
         <button className={styles.button}>Sign in</button>
       </form>
     </div>
+
   );
 
   // return (
