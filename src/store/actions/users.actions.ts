@@ -39,6 +39,7 @@ export const loginUser = createAsyncThunk(
     try {
       const { data } = await $axios.post("/account/login/", formData);
       localStorage.setItem("tokens", JSON.stringify(data));
+      dispatch(getCurrentUser());
       navigate("/");
       dispatch(setError(null));
     } catch (error: any) {
@@ -50,7 +51,7 @@ export const loginUser = createAsyncThunk(
 
 export const getCurrentUser = createAsyncThunk(
   "users/getCurrentUser",
-  async (id: number | string) => {
+  async () => {
     try {
       const { data } = await $axios.get<ProfileType>("/account/profile/");
       return data;

@@ -17,21 +17,22 @@ export const usersSlice = createSlice({
   name: "users",
   initialState: INIT_STATE,
   reducers: {
-    setError: (state, action) => {
-      state.error = action.payload;
+    setError: (state, { payload }) => {
+      state.error = payload;
     },
-    logout: () => {
+    logout: (state) => {
       localStorage.removeItem("tokens");
+      state.user = null;
     },
   },
   extraReducers: (builder) => {
     builder
+      .addCase(getCurrentUser.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.loading = false;
+      })
       .addCase(getCurrentUser.pending, (state) => {
         state.loading = true;
-      })
-      .addCase(getCurrentUser.fulfilled, (state, action) => {
-        state.loading = false;
-        state.user = action.payload!;
       });
   },
 });
