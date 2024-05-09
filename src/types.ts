@@ -5,3 +5,10 @@ export type RegisterValues = {
 };
 
 export type LoginValues = Omit<RegisterValues, "password_confirm">;
+
+export interface ProfileType extends RegisterValues {
+  name: string;
+  lastName: string;
+  city: string;
+  avatar: string;
+}
