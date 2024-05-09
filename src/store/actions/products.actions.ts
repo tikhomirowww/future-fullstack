@@ -12,3 +12,32 @@ export const getProducts = createAsyncThunk(
     }
   }
 );
+
+export const addToFavorites = createAsyncThunk(
+  "products/addToFavorites",
+  async (id: number) => {
+    console.log(id);
+
+    try {
+      const response = await $axios.get(`products/${id}/toggle_favorites/`);
+      console.log(response);
+      alert('Adding successfully!')
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+export const getFavoriteProducts = createAsyncThunk(
+  "favoriteProducts/getFavoriteProducts",
+  async () => {
+    try {
+      const response = await $axios.get("/favorites")
+      console.log(response);
+      return response.data
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
+)
