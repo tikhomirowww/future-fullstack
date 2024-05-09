@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getCurrentUser } from "../actions/users.actions";
+import { ProfileType } from "../../types";
 
 type StatesType = {
   error: null | string;
   loading: boolean;
-  user: null | any;
+  user: null | ProfileType;
 };
 
 const INIT_STATE: StatesType = {
@@ -28,7 +29,7 @@ export const usersSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getCurrentUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.user = action.payload!;
         state.loading = false;
       })
       .addCase(getCurrentUser.pending, (state) => {

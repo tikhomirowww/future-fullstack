@@ -1,0 +1,47 @@
+.navbar {
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  border-bottom: solid 2px;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: space-around;
+  font-size: 120%;
+
+  color: #000;
+}
+.registerUser {
+  width: 10%;
+  display: flex;
+  justify-content: space-between;
+}
+.registerUser a {
+  text-decoration: none;
+  color: #000;
+}
+.user {
+  width: 15%;
+  display: flex;
+  justify-content: space-around;
+}
+.logo {
+  font-weight: 700;
+}
+.user p {
+  font-weight: 700;
+}
+.links {
+  display: flex;
+}
+a {
+  text-decoration: none;
+  color: #000;
+  transition: 0.3s;
+}
+
+a:hover {
+  transform: translateY(-2px);
+  color: rgb(237, 188, 64);
+  text-decoration: underline 2px rgb(237, 188, 64);
+}

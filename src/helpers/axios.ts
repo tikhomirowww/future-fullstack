@@ -1,6 +1,18 @@
 import axios from "axios";
+import { useAppDispatch } from "./hooks";
+import { logout } from "../store/slices/users.slice";
+import { useNavigate } from "react-router-dom";
 
 export const $axios = axios.create();
+
+function HandleLogout() {
+  console.log("test");
+
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  dispatch(logout());
+  navigate("/login");
+}
 
 $axios.interceptors.request.use(async (config) => {
   config.baseURL = "http://34.173.115.25/api/v1";
@@ -30,7 +42,8 @@ $axios.interceptors.response.use(
           );
           return $axios.request(originalRequest);
         } catch (error) {
-          console.log(error);
+          console.log("hello", error);
+          HandleLogout();
         }
       }
     }
