@@ -2,8 +2,12 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../helpers/hooks";
 import { registerUser } from "../../store/actions/users.actions";
 import { useNavigate } from "react-router-dom";
+
+import Input from "../../components/Input/Input";
+
 import { RegisterValues } from "../../types";
 import styles from "./regLog.module.css";
+
 
 const RegisterPage = () => {
   const [user, setUser] = useState<RegisterValues>({
@@ -51,23 +55,21 @@ const RegisterPage = () => {
   }
 
   return (
-    <div className={styles.container}>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <h2>Register form</h2>
-        {error && <h2 style={{ color: "red" }}>{error}!!!</h2>}
-        {Object.keys(user).map((item) => (
-          <input
-            onChange={handleChange}
-            name={item}
-            key={item}
-            type="text"
-            placeholder={item}
-            className={styles.input}
-          />
-        ))}
-        <button className={styles.button}>Sign up</button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit} className={styles.container}>
+      <h2>Register form</h2>
+      {error && <h2 style={{ color: "red" }}>{error}!!!</h2>}
+      {Object.keys(user).map((item) => (
+        <Input
+          onChange={handleChange}
+          name={item}
+          key={item}
+          type="text"
+          placeholder={item}
+        />
+      ))}
+     <button className={styles.button}>Sign up</button>
+    </form>
+
   );
 };
 
