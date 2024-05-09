@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { LoginValues, RegisterValues } from "../../types";
+import { LoginValues, ProfileType, RegisterValues } from "../../types";
 import { $axios } from "../../helpers/axios";
 import { setError } from "../slices/users.slice";
 
@@ -44,6 +44,18 @@ export const loginUser = createAsyncThunk(
     } catch (error: any) {
       console.log(Object.values(error.response.data).flat(2)[0]);
       dispatch(setError(Object.values(error.response.data).flat(2)[0]));
+    }
+  }
+);
+
+export const getCurrentUser = createAsyncThunk(
+  "users/getCurrentUser",
+  async (id: number | string) => {
+    try {
+      const { data } = await $axios.get<ProfileType>("/account/profile/");
+      return data;
+    } catch (error) {
+      console.log(error);
     }
   }
 );
