@@ -1,7 +1,8 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../helpers/hooks";
-import { loginUser, registerUser } from "../../store/actions/users.actions";
+import { loginUser, registerUser} from "../../store/actions/users.actions";
 import { useNavigate } from "react-router-dom";
+import Button from "../../ui/Button";
 
 const LoginPage = () => {
   const [user, setUser] = useState({
@@ -37,7 +38,7 @@ const LoginPage = () => {
           placeholder={item}
         />
       ))}
-      <button>Sign in</button>
+      <Button>Sign in</Button>
     </form>
   );
 };
