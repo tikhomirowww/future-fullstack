@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getCurrentUser } from "../actions/users.actions";
 
 type StatesType = {
   error: null | string;
@@ -22,6 +23,16 @@ export const usersSlice = createSlice({
     logout: () => {
       localStorage.removeItem("tokens");
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getCurrentUser.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getCurrentUser.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload!;
+      });
   },
 });
 

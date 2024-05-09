@@ -1,7 +1,9 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../helpers/hooks";
-import { loginUser, registerUser } from "../../store/actions/users.actions";
+import { loginUser, registerUser} from "../../store/actions/users.actions";
 import { useNavigate } from "react-router-dom";
+import Button from "../../ui/Button";
+import styles from "./regLog.module.css";
 
 const LoginPage = () => {
   const [user, setUser] = useState({
@@ -25,21 +27,46 @@ const LoginPage = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Login form</h2>
-      {error && <h2 style={{ color: "red" }}>{error}!!!</h2>}
-      {Object.keys(user).map((item) => (
-        <input
-          onChange={handleChange}
-          name={item}
-          key={item}
-          type="text"
-          placeholder={item}
-        />
-      ))}
-      <button>Sign in</button>
-    </form>
+
+    <div className={styles.container}>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <h2>Login form</h2>
+        {error && <h2 style={{ color: "red" }}>{error}!!!</h2>}
+        {Object.keys(user).map((item) => (
+          <input
+            onChange={handleChange}
+            name={item}
+            key={item}
+            type="text"
+            placeholder={item}
+            className={styles.input}
+          />
+        ))}
+        <button className={styles.button}>Sign in</button>
+      </form>
+    </div>
+
   );
+
+  // return (
+  //   <div className={styles.container}>
+  //     <form onSubmit={handleSubmit} className={styles.form}>
+  //       <h2>Register form</h2>
+  //       {error && <h2 style={{ color: "red" }}>{error}!!!</h2>}
+  //       {Object.keys(user).map((item) => (
+  //         <input
+  //           onChange={handleChange}
+  //           name={item}
+  //           key={item}
+  //           type="text"
+  //           placeholder={item}
+  //           className={styles.input}
+  //         />
+  //       ))}
+  //       <button className={styles.button}>Sign up</button>
+  //     </form>
+  //   </div>
+  // );
 };
 
 export default LoginPage;
