@@ -2,6 +2,7 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../helpers/hooks";
 import { registerUser } from "../../store/actions/users.actions";
 import { useNavigate } from "react-router-dom";
+import Input from "../../components/Input/Input";
 
 const RegisterPage = () => {
   const [user, setUser] = useState({
@@ -30,7 +31,7 @@ const RegisterPage = () => {
       <h2>Register form</h2>
       {error && <h2 style={{ color: "red" }}>{error}!!!</h2>}
       {Object.keys(user).map((item) => (
-        <input
+        <Input
           onChange={handleChange}
           name={item}
           key={item}
