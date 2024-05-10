@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../helpers/hooks";
 import { getProducts } from "../../store/actions/products.actions";
-import { addToFavorites } from "../../store/actions/products.actions";
-import Button from "../../ui/Button";
 import { nextPage, prevPage } from "../../store/slices/products.slice";
+import Button from "../../ui/Button";
 import { useSearchParams } from "react-router-dom";
-import favoritesBtn from "../../images/favoritesBtn.jpg";
 import styles from "./products.module.css";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import { ProductType } from "../../types";
 
 const ProductsList = () => {
   const dispatch = useAppDispatch();
@@ -22,26 +22,13 @@ const ProductsList = () => {
   }, [dispatch, currentPage]);
 
   return (
-    <div>
+    <div className="container">
       {loading ? (
         <h2>Loading...</h2>
       ) : (
         <>
-
-          {products?.map((item) => (
-            <div key={item.id}>
-              <img src={item.image} alt={item.title} />
-              <div className={styles.cardTop}>
-                <h2>Title: {item.title}</h2>
-                <img
-                  src={favoritesBtn}
-                  alt=""
-                  className={styles.favoritesBtn}
-                  onClick={() => dispatch(addToFavorites(item.id))}
-                />
-              </div>
-              <p>{item.description}</p>
-            </div>
+          {products?.map((item: ProductType) => (
+            <ProductCard product={item}  key={item.id} /> 
           ))}
         </>
       )}
