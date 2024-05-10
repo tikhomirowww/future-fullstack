@@ -1,8 +1,12 @@
+.active {
+  color: rgb(237, 188, 64) !important;
+  text-decoration: underline 2px rgb(237, 188, 64) !important;
+}
 body {
   background-color: #fff;
-user-select: none;
-font-weight: 400;
-font-style: normal;
+  user-select: none;
+  font-weight: 400;
+  font-style: normal;
   font-size: 16px;
 }
 
