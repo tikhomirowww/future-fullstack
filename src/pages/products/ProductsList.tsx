@@ -26,16 +26,20 @@ const ProductsList = () => {
       {loading ? (
         <h2>Loading...</h2>
       ) : (
-        <>
+        <div className={styles.cardsList}>
           {products?.map((item: ProductType) => (
             <ProductCard product={item}  key={item.id} /> 
           ))}
-        </>
+        </div>
       )}
-      <div>
-        <Button onClick={() => dispatch(prevPage())}>Prev</Button>
-        <span>{currentPage}</span>
-        <Button onClick={() => dispatch(nextPage())}>Next</Button>
+      <div className={styles.pagination}>
+      <Button onClick={() => dispatch(prevPage())} disabled={currentPage === 1}>
+        Prev
+      </Button>
+      <span>{currentPage}</span>
+      <Button onClick={() => dispatch(nextPage())}>
+        Next
+      </Button>
       </div>
     </div>
   );

@@ -4,6 +4,8 @@ user-select: none;
 font-weight: 400;
 font-style: normal;
   font-size: 16px;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
 }
 
 *,

@@ -18,11 +18,11 @@ const Favorites = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="">
       {loading ? (
         <h2>Loading...</h2>
       ) : (
-        <div >
+        <div className={styles.cardsList}>
           {favoriteProducts.results &&
             favoriteProducts.results.map((item: ProductType) => (
               <ProductCard product={item}  key={item.id} /> 
