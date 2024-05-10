@@ -54,8 +54,10 @@ const RegisterPage = () => {
     dispatch(registerUser({ data: user, navigate }));
   }
 
+
   return (
-    <form onSubmit={handleSubmit} className={styles.container}>
+    <div className={styles.container}>
+    <form onSubmit={handleSubmit}  className={styles.form}>
       <h2>Register form</h2>
       {error && <h2 style={{ color: "red" }}>{error}!!!</h2>}
       {Object.keys(user).map((item) => (
@@ -70,6 +72,8 @@ const RegisterPage = () => {
      <button className={styles.button}>Sign up</button>
     </form>
 
+
+    </div>
   );
 };
 

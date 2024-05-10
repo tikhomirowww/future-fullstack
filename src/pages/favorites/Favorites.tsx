@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../helpers/hooks";
 import { getFavoriteProducts } from "../../store/actions/products.actions";
+import styles from "../products/products.module.css"
+import ProductCard from "../../components/ProductCard/ProductCard";
+import { ProductType } from "../../types";
 
 const Favorites = () => {
   const { loading, favoriteProducts } = useAppSelector(
@@ -15,20 +18,16 @@ const Favorites = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="container">
       {loading ? (
         <h2>Loading...</h2>
       ) : (
-        <>
+        <div className={styles.cardsList}>
           {favoriteProducts.results &&
-            favoriteProducts.results.map((item: any) => (
-              <div key={item.id}>
-                <img src={item.image} alt={item.title} />
-                <h2>Title: {item.title}</h2>
-                <p>{item.description}</p>
-              </div>
+            favoriteProducts.results.map((item: ProductType) => (
+              <ProductCard product={item}  key={item.id} /> 
             ))}
-        </>
+        </div>
       )}
     </div>
   );

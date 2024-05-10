@@ -1,18 +1,17 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import styles from "./button.module.css";
 
 interface IButton {
   children?: string;
-  onClick?: () => void; 
+  onClick?: () => void;
+  disabled?: boolean; 
 }
 
-const Button: FC<IButton> = ({ children, onClick }) => {
+const Button: FC<IButton> = ({ children, onClick, disabled }) => {
   return (
-    <>  
-      <button className={styles.button} onClick={onClick}>
-        {children}
+    <button className={styles.button} onClick={onClick} disabled={disabled}>
+      {children}
     </button>
-    </>
   );
 };
 
