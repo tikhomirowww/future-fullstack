@@ -4,6 +4,7 @@ import { getProducts } from "../../store/actions/products.actions";
 import Button from "../../ui/Button";
 import { nextPage, prevPage } from "../../store/slices/products.slice";
 import { useSearchParams } from "react-router-dom";
+import Loading from "../../components/loading/Loading";
 
 const ProductsList = () => {
   const dispatch = useAppDispatch();
@@ -21,7 +22,7 @@ const ProductsList = () => {
   return (
     <div>
       {loading ? (
-        <h2>Loading...</h2>
+        <Loading />
       ) : (
         <>
           {products?.map((item) => (

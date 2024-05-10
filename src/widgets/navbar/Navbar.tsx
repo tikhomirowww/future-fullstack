@@ -5,6 +5,7 @@ import { logout } from "../../store/slices/users.slice";
 import { getCurrentUser } from "../../store/actions/users.actions";
 import { Link } from "react-router-dom";
 import Search from "../../components/search/Search";
+import Button from "../../ui/Button";
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
@@ -18,7 +19,7 @@ const Navbar = () => {
 
   return (
     <div className={styles.navbar}>
-      <div className={styles.logo}>Logo</div>
+      <div className={styles.logo}>Future JS</div>
       <div className={styles.links}>
         <Link to={"/"}>Home</Link>
       </div>
@@ -32,7 +33,7 @@ const Navbar = () => {
       ) : (
         <div className={styles.user}>
           {user && <p>{user.email}</p>}
-          <button onClick={() => dispatch(logout())}>Logout</button>
+          <Button onClick={() => dispatch(logout())}>Logout</Button>
         </div>
       )}
     </div>
