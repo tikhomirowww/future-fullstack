@@ -4,9 +4,13 @@ import { getProducts } from "../../store/actions/products.actions";
 import { nextPage, prevPage } from "../../store/slices/products.slice";
 import Button from "../../ui/Button";
 import { useSearchParams } from "react-router-dom";
+
+import Loading from "../../components/loading/Loading";
+import favoritesBtn from "../../images/favoritesBtn.jpg";
 import styles from "./products.module.css";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import { ProductType } from "../../types";
+
 
 const ProductsList = () => {
   const dispatch = useAppDispatch();
@@ -24,7 +28,7 @@ const ProductsList = () => {
   return (
     <div className="container">
       {loading ? (
-        <h2>Loading...</h2>
+        <Loading />
       ) : (
         <div className={styles.cardsList}>
           {products?.map((item: ProductType) => (
