@@ -4,6 +4,7 @@ import { loginUser, registerUser} from "../../store/actions/users.actions";
 import { useNavigate } from "react-router-dom";
 import Button from "../../ui/Button";
 import styles from "./regLog.module.css";
+import Input from "../../components/Input";
 
 const LoginPage = () => {
   const [user, setUser] = useState({
@@ -33,13 +34,12 @@ const LoginPage = () => {
         <h2>Login form</h2>
         {error && <h2 style={{ color: "red" }}>{error}!!!</h2>}
         {Object.keys(user).map((item) => (
-          <input
+          <Input
             onChange={handleChange}
             name={item}
             key={item}
             type="text"
             placeholder={item}
-            className={styles.input}
           />
         ))}
         <button className={styles.button}>Sign in</button>
