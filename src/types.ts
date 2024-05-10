@@ -30,3 +30,16 @@ export type ProductType = {
   liked_by_user: boolean;
   favorite_by_user: boolean;
 };
+
+export type newProduct = {
+  title: string;
+  description: string;
+  price: string;
+  category: string;
+  image: null | File;
+};
+
+export type ReviewType = {
+  text: string;
+  product: number;
+};

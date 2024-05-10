@@ -1,23 +1,23 @@
 import React, {
   ChangeEvent,
   ChangeEventHandler,
+  FormEvent,
   useEffect,
   useState,
 } from "react";
 import Input from "../../../components/Input";
 import Button from "../../../ui/Button";
 import { useAppDispatch, useAppSelector } from "../../../helpers/hooks";
-import { getCategories } from "../../../store/actions/products.actions";
+import {
+  addProduct,
+  getCategories,
+  sendComment,
+} from "../../../store/actions/products.actions";
+import { newProduct } from "../../../types";
+import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
-  type Product = {
-    title: string;
-    description: string;
-    price: string;
-    category: string;
-    image: null | File;
-  };
-  const [product, setProduct] = useState<Product>({
+  const [product, setProduct] = useState<newProduct>({
     title: "",
     description: "",
     price: "",
@@ -26,6 +26,7 @@ const AddProduct = () => {
   });
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { categories } = useAppSelector((state) => state.products);
 
   useEffect(() => {
@@ -43,8 +44,13 @@ const AddProduct = () => {
     }
   }
 
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    dispatch(addProduct({ product, navigate }));
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <h2>AddProduct</h2>
       <Input
         onChange={handleChange}

@@ -33,7 +33,7 @@ const Navbar = () => {
       ) : (
         <div className={styles.user}>
           <NavLink to={"/favorites"}>See favorites</NavLink>
-          <NavLink to={"/add"}>App product</NavLink>
+          <NavLink to={"/add"}>Add product</NavLink>
           {user && <p>{user.email}</p>}
           <Button onClick={() => dispatch(logout())}>Logout</Button>
         </div>

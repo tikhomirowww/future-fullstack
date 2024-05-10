@@ -4,12 +4,18 @@ import styles from "./button.module.css";
 interface IButton {
   children?: string;
   onClick?: () => void;
-  disabled?: boolean; 
+  disabled?: boolean;
+  bg?: string;
 }
 
-const Button: FC<IButton> = ({ children, onClick, disabled }) => {
+const Button: FC<IButton> = ({ children, onClick, disabled, bg }) => {
   return (
-    <button className={styles.button} onClick={onClick} disabled={disabled}>
+    <button
+      style={{ backgroundColor: bg }}
+      className={styles.button}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {children}
     </button>
   );

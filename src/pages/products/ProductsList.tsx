@@ -10,7 +10,6 @@ import styles from "./products.module.css";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import { ProductType } from "../../types";
 
-
 const ProductsList = () => {
   const dispatch = useAppDispatch();
   const { loading, products, currentPage } = useAppSelector(
@@ -31,18 +30,19 @@ const ProductsList = () => {
       ) : (
         <div className={styles.cardsList}>
           {products?.map((item: ProductType) => (
-            <ProductCard product={item}  key={item.id} /> 
+            <ProductCard product={item} key={item.id} />
           ))}
         </div>
       )}
       <div className={styles.pagination}>
-      <Button onClick={() => dispatch(prevPage())} disabled={currentPage === 1}>
-        Prev
-      </Button>
-      <span>{currentPage}</span>
-      <Button onClick={() => dispatch(nextPage())}>
-        Next
-      </Button>
+        <Button
+          onClick={() => dispatch(prevPage())}
+          disabled={currentPage === 1}
+        >
+          Prev
+        </Button>
+        <span>{currentPage}</span>
+        <Button onClick={() => dispatch(nextPage())}>Next</Button>
       </div>
     </div>
   );

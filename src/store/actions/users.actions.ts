@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { LoginValues, ProfileType, RegisterValues } from "../../types";
 import { $axios } from "../../helpers/axios";
 import { setError } from "../slices/users.slice";
+import axios from "axios";
 
 export const registerUser = createAsyncThunk(
   "users/registerUser",
