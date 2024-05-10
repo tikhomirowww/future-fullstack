@@ -4,7 +4,6 @@ import { getProducts } from "../../store/actions/products.actions";
 import { nextPage, prevPage } from "../../store/slices/products.slice";
 import Button from "../../ui/Button";
 import { useSearchParams } from "react-router-dom";
-
 import Loading from "../../components/loading/Loading";
 import favoritesBtn from "../../images/favoritesBtn.jpg";
 import styles from "./products.module.css";
