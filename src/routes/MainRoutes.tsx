@@ -6,6 +6,7 @@ import LoginPage from "../pages/auth/LoginPage";
 import NotFoundPage from "../pages/not-found/NotFoundPage";
 import ProductsList from "../pages/products/ProductsList";
 import Favorites from "../pages/favorites/Favorites";
+import AddProduct from "../pages/products/add/AddProduct";
 
 export const router = createBrowserRouter([
   {
@@ -14,6 +15,7 @@ export const router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       { path: "/", element: <ProductsList /> },
+      { path: "/add", element: <AddProduct /> },
       { path: "/register", element: <RegisterPage /> },
       { path: "/login", element: <LoginPage /> },
       { path: "*", element: <NotFoundPage /> },

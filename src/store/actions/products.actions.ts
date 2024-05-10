@@ -21,7 +21,7 @@ export const addToFavorites = createAsyncThunk(
     try {
       const response = await $axios.get(`products/${id}/toggle_favorites/`);
       console.log(response);
-      alert('Adding successfully!')
+      alert("Adding successfully!");
     } catch (error) {
       console.log(error);
     }
@@ -32,12 +32,19 @@ export const getFavoriteProducts = createAsyncThunk(
   "favoriteProducts/getFavoriteProducts",
   async () => {
     try {
-      const response = await $axios.get("/favorites")
+      const response = await $axios.get("/favorites");
       console.log(response);
-      return response.data
+      return response.data;
     } catch (error) {
       console.log(error);
-      
     }
   }
-)
+);
+
+export const getCategories = createAsyncThunk(
+  "products/getCategories",
+  async () => {
+    const { data } = await $axios.get("/category/list/");
+    return data.results;
+  }
+);

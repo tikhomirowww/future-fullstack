@@ -8,6 +8,7 @@ interface InputProps {
   type?: string;
   placeholder: string;
   value?: string;
+  accept?: string;
 }
 
 const Input: FC<InputProps> = ({
@@ -16,12 +17,14 @@ const Input: FC<InputProps> = ({
   type = "text",
   placeholder,
   value,
+  accept,
 }) => {
   return (
     <input
       value={value}
       type={type}
       name={name}
+      accept={accept}
       placeholder={placeholder}
       onChange={onChange}
       className={styles.input}

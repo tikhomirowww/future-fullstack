@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ProductType } from "../../types";
+import { CategoryType, ProductType } from "../../types";
 import {
   addToFavorites,
   getProducts,
   getFavoriteProducts,
+  getCategories,
 } from "../actions/products.actions";
 
 type StatesType = {
@@ -11,6 +12,7 @@ type StatesType = {
   loading: boolean;
   currentPage: number;
   favoriteProducts: any;
+  categories: CategoryType[];
 };
 
 const INIT_STATE: StatesType = {
@@ -18,6 +20,7 @@ const INIT_STATE: StatesType = {
   loading: false,
   currentPage: 1,
   favoriteProducts: [],
+  categories: [],
 };
 
 export const productsSlice = createSlice({
@@ -50,7 +53,11 @@ export const productsSlice = createSlice({
         state.loading = false;
         state.favoriteProducts = payload;
       })
-      .addCase(getFavoriteProducts.rejected, (state) => console.log(state));
+      .addCase(getFavoriteProducts.rejected, (state) => console.log(state))
+      .addCase(getCategories.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.categories = payload;
+      });
   },
 });
 
