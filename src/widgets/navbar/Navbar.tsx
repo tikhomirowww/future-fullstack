@@ -3,7 +3,7 @@ import styles from "./Navbar.module.css";
 import { useAppDispatch, useAppSelector } from "../../helpers/hooks";
 import { logout } from "../../store/slices/users.slice";
 import { getCurrentUser } from "../../store/actions/users.actions";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Search from "../../components/search/Search";
 import Button from "../../ui/Button";
 
@@ -21,18 +21,18 @@ const Navbar = () => {
     <div className={styles.navbar}>
       <div className={styles.logo}>Future JS</div>
       <div className={styles.links}>
-        <Link to={"/"}>Home</Link>
+        <NavLink to={"/"}>Home</NavLink>
       </div>
       <Search />
 
       {!tokens ? (
         <div className={styles.registerUser}>
-          <Link to={"/register"}>Register</Link>
-          <Link to={"/login"}>Login</Link>
+          <NavLink to={"/register"}>Register</NavLink>
+          <NavLink to={"/login"}>Login</NavLink>
         </div>
       ) : (
         <div className={styles.user}>
-          <Link to={"/favorites"}>See favorites</Link>
+          <NavLink to={"/favorites"}>See favorites</NavLink>
           {user && <p>{user.email}</p>}
           <Button onClick={() => dispatch(logout())}>Logout</Button>
         </div>

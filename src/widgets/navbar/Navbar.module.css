@@ -1,6 +1,6 @@
 .navbar {
   width: 100%;
-  height: 50px;
+  height: 80px;
   display: flex;
   align-items: center;
   border-bottom: solid 2px;
@@ -19,7 +19,7 @@
   text-decoration: none;
 }
 .user {
-  width: 20%;
+  width: 28%;
   display: flex;
   justify-content: space-around;
   align-items: center;
