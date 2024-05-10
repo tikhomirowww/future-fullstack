@@ -32,6 +32,7 @@ const Navbar = () => {
         </div>
       ) : (
         <div className={styles.user}>
+          <Link to={"/favorites"}>See favorites</Link>
           {user && <p>{user.email}</p>}
           <Button onClick={() => dispatch(logout())}>Logout</Button>
         </div>

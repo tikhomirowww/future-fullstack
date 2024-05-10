@@ -5,6 +5,7 @@ import RegisterPage from "../pages/auth/RegisterPage";
 import LoginPage from "../pages/auth/LoginPage";
 import NotFoundPage from "../pages/not-found/NotFoundPage";
 import ProductsList from "../pages/products/ProductsList";
+import Favorites from "../pages/favorites/Favorites";
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ export const router = createBrowserRouter([
       { path: "/register", element: <RegisterPage /> },
       { path: "/login", element: <LoginPage /> },
       { path: "*", element: <NotFoundPage /> },
+      { path: "/favorites", element: <Favorites /> },
     ],
   },
 ]);
