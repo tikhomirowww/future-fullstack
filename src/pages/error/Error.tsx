@@ -15,7 +15,7 @@ const Error = () => {
     }
   };
 
-  const getObj = (objID: string) => {
+  const getObj = (objID: string) => {             
     if (document.getElementById) {
       return document.getElementById(objID);
     } else if (document.all) {
